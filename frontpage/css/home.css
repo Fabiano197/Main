@@ -1,0 +1,21 @@
+.jumbotron{
+	margin-top: 50px;
+}
+
+.btn-primary{
+	color: #fff;
+    background-color: #69AEC2;
+    border-color: #69AEC2;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #3F8DA3;
+    border-color: #3F8DA3;
+}
+
+
+#kamera{
+	margin-left: calc(50% - 75px);
+	width: 150px;
+}

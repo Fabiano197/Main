@@ -1,0 +1,35 @@
+
+.menu_top{
+ height:50px;
+}
+
+.menu_top a{
+	color: #000;
+}
+
+#title_name:hover{
+	cursor: default !important;
+	background: none !important;
+}
+
+#header a{
+	color: #000;
+}
+
+#header a:hover{
+	cursor: pointer;
+	background: rgba(105,174,194,0.25);
+}
+
+#nbAcctDD{
+	background: #69AEC2;
+	color: #fff !important;
+}
+
+#nbAcctDD:hover{
+    background-color: #3F8DA3 !important;
+}
+
+.nohover a:hover{
+	background: rgba(0,0,0,0) !important;
+}
