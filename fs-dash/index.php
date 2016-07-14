@@ -31,6 +31,8 @@
 	$message_avatar_array = $message_comp_array["avatar"];
 	$messages_count = sizeof($message_message_array);
 	
+	$message_alerts = array(array("Welcome!", "Info", "info"), array("New version avaiable", "3.4.4", "warning"), array("Update crucial!", "Reminder", "danger"));
+	
 	//[-------------------------------]
 	//| message notification varibles |
 	//[-------------------------------]
@@ -191,7 +193,11 @@
                     <ul class="dropdown-menu alert-dropdown">
 						
 						<?php
-							message_alert("Welcome!", "Info", "info");
+							//message_alert("Welcome!", "Info", "info");
+							
+							for($i = 0; $i < sizeof($message_alerts); $i++){
+								message_alert($message_alerts[$i][0], $message_alerts[$i][1], $message_alerts[$i][2]);
+							}
 						?>
                     </ul>
                 </li>
