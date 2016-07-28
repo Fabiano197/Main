@@ -6,20 +6,42 @@ body{
 	padding: 10px;
 }
 
+.btn{
+	color: #fff;
+}
+
 .btn:hover{
 	background: rgba(105,174,194,0.25);
 }
 
 .btn-primary{
-	color: #fff;
     background-color: #69AEC2;
     border-color: #69AEC2;
 }
 
 .btn-primary:hover {
-    color: #fff;
     background-color: #3F8DA3;
     border-color: #3F8DA3;
+}
+
+.btn-primary:active {
+    background-color: #257C95 !important;
+    border-color: #257C95 !important;
+}
+
+.btn-danger{
+    background-color: #EF4836;
+    border-color: #EF4836;
+}
+
+.btn-danger:hover {
+    background-color: #D02311;
+    border-color: #D02311;
+}
+
+.btn-danger:active {
+    background-color: #A41203 !important;
+    border-color: #A41203 !important;
 }
 
 .panel-primary{
@@ -105,3 +127,4 @@ form textarea {
 	margin-left: 2.5%;
 	width: 95% !important;
 }
+
