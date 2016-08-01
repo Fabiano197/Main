@@ -74,7 +74,6 @@
                                 </div>
                                 <?php
 									if($rememberOption == 1){
-										
 										echo '<div class="checkbox">
 												<label>
 													<input name="remember" type="checkbox" value="Remember Me">Remember Me
