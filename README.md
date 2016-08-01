@@ -14,6 +14,7 @@ To-do:
 Links:
 http://paletton.com/palette.php?uid=3040w0koMt%2Bf8GFkkxxtmq9vlkD
 http://stackoverflow.com/questions/19462672/jquery-detect-bootstrap-3-state
+http://www.jasny.net/bootstrap/javascript/#fileinput
 
 
 
