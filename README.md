@@ -2,7 +2,7 @@ To-do:
 - Design ausarbeiten und festlegen
 	- Hintergrund-Muster
 	- Begrüssungsbildschirm mit Einleitungstext
-- Kapitel-Content mit php laden
+- <s>Kapitel-Content mit php laden</s>
 - Downloads mit php laden
 - Account erstellen implementieren
 - Wenn eingeloggt Registrieren-Button disablen
