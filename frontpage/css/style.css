@@ -44,6 +44,22 @@ body{
     border-color: #A41203 !important;
 }
 
+.disabled_2{
+	background-color: #D3D3D3;
+    border-color: #D3D3D3;
+}
+
+.disabled_2:hover{
+	background-color: #D3D3D3;
+    border-color: #D3D3D3;
+	cursor: not-allowed;
+}
+
+.disabled_2:active{
+	background-color: #D3D3D3 !important;
+    border-color: #D3D3D3 !important;
+}
+
 .panel-primary{
 	border-width: 2px;
 	border-color: #3F8DA3;
