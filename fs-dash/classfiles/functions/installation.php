@@ -16,7 +16,7 @@ function createDatabase(){
 
 function createTables(){
 	
-	$query = "CREATE TABLE pages
+	$query = "CREATE TABLE auth
 			(
 			User varchar(30),
 			Passwd varchar(100),
@@ -27,11 +27,21 @@ function createTables(){
 			
 	echo sqlquery($query);
 			
-	$query = "CREATE TABLE auth
+	$query = "CREATE TABLE pages
 			(
 			Pagename varchar(50),
 			PageID varchar(20),
 			Content text
+			)";
+			
+	echo sqlquery($query);
+	
+	$query = "CREATE TABLE kommentare
+			(
+			Benutzer text,
+			Datum text,
+			Kommentar text,
+			Titel text
 			)";
 			
 	echo sqlquery($query);
