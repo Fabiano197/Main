@@ -9,7 +9,7 @@
 					if(!empty($_GET) && $_GET["kap"] == $chapters[$i]){
 						echo " class='selected'";
 					}
-					echo " href='kapitel.php?kap=" . $chapters[$i] . "'>" . ($i+1) . ". " . $chapters[$i] . " </a>";
+					echo " href='index.php?loc=kapitel&kap=" . $chapters[$i] . "'>" . ($i+1) . ". " . $chapters[$i] . " </a>";
 					echo "</li>";
 				}
 			?>
