@@ -209,7 +209,7 @@
             </div>
 			<nav>
   <ul class="pager">
-    <li><a href="kapitel.php?kap=<?php echo ($_GET['kap'] - 1) ?>"><button type="button" class="btn btn-primary <?php if($_GET['kap'] == 7){echo "disabled_2";}?>" <?php if($_GET['kap'] == 7){echo "onclick='return false;'";}?>>Zurück</button></a></li>
+    <li><a href="kapitel.php?kap=<?php echo ($_GET['kap'] - 1) ?>"><button type="button" class="btn btn-primary <?php if($_GET['kap'] == 1){echo "disabled_2";}?>" <?php if($_GET['kap'] == 7){echo "onclick='return false;'";}?>>Zurück</button></a></li>
     <li><a href="kapitel.php?kap=<?php echo ($_GET['kap'] + 1) ?>"><button type="button" class="btn btn-primary <?php if($_GET['kap'] == 14){echo "disabled_2";}?>" <?php if($_GET['kap'] == 14){echo "onclick='return false;'";}?>>Weiter</button></a></li>
   </ul>
 </nav>
