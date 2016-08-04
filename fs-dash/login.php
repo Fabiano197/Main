@@ -5,12 +5,15 @@
 
 	$rememberOption = 0;
 	
-	$error= "";
-	if(isset($_GET["error"]) == true){
-		$error = $_GET["error"];
+	session_start();
+	
+	$error = array('error' => "", 'set' => false);
+	if(isset($_SESSION["login-error"]) == true){
+		$error["error"] = $_SESSION["login-error"];
+		$error["set"] = true;
 	}
 	
-	$error = str_replace("-", " ", $error);
+	session_unset();
 	
 ?>
 
@@ -82,9 +85,9 @@
 											  </div>';
 									}
 									
-									if(isset($_GET["error"]) == true){
+									if($error["set"] == true){
 										echo '<div class="form-group">
-												<h3><span class="label label-danger">Error: '.$error.'</span></h3>
+												<h3><span class="label label-danger">Error: '.$error["error"].'</span></h3>
 											</div>';
 									}
 								
