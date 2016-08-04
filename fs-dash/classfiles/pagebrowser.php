@@ -17,10 +17,11 @@ function pageBrowser(){
 				$query = "select * from pages";
 				$result = sqlquery($query);
 				
-				$contentArrayContent = "";
 				$fpidArrayContent = "";
 				$pagenameArrayContent = "";
 				$curPos = 0;
+				
+				$cachecontent = array();
 				
 				while($table_headings = mysql_fetch_assoc($result)){
 				
@@ -28,7 +29,6 @@ function pageBrowser(){
 				$pagename = $table_headings["Pagename"];
 				$cpageid = $table_headings["PageID"];
 				
-				$contentArrayContent .= '"'.$table_headings["Content"].'",';
 				$fpidArrayContent .= '"'.$table_headings["PageID"].'",';
 				$pagenameArrayContent .= '"'.$table_headings["Pagename"].'",';
 				
@@ -42,7 +42,16 @@ function pageBrowser(){
 				
 				$curPos++;
 				
+				$tablerow = array("name" => $table_headings["PageID"], "content" => $table_headings["Content"]);
+				array_push($cachecontent, $tablerow);
+				
 				}
+				
+				include("/../page_cache/compile-cache.php");
+				$cc = new CacheCompiler();
+				
+				$cc->purge();
+				$cc->cache($cachecontent);
 				
 				?>
 					<div id="add_new_site_placeholder"></div>
@@ -57,11 +66,9 @@ function pageBrowser(){
 	</div>
 	
 	<?php
-	$contentArrayContent = trim(preg_replace('/\s+/', ' ', $contentArrayContent));
 	$fpidArrayContent = trim(preg_replace('/\s+/', ' ', $fpidArrayContent));
 	$pagenameArrayContent = trim(preg_replace('/\s+/', ' ', $pagenameArrayContent));
 	
-	echo '<script>var contentArray = ['.substr($contentArrayContent, 0, strlen($contentArrayContent)-1).'];</script>';
 	echo '<script>var fpidArray = ['.substr($fpidArrayContent, 0, strlen($fpidArrayContent)-1).'];</script>';
 	echo '<script>var pagenameArray = ['.substr($pagenameArrayContent, 0, strlen($pagenameArrayContent)-1).'];</script>';
 }
