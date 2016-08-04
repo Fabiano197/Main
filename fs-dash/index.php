@@ -14,6 +14,8 @@
 	include_once("classfiles/userauth.php");
 	include_once("classfiles/analytics.php");
 	
+	session_start();
+	
 	//[-------------------------------]
 	//| 		system vars			  |
 	//[-------------------------------]
@@ -97,6 +99,12 @@
 	//|			Authentication		|
 	//[-----------------------------]
 	
+	if(!empty($_SESSION["authkey"])){
+		$authkey = $_SESSION["authkey"];
+		$uuid = $_SESSION["uuid"];
+		$username = $_SESSION["username"];
+	}
+	
 	if(isset($_POST["password"]) == true) $authkey = $userauth->genAuthKey($username, $password);
 	
 	if(strlen($uuid) < 10){
@@ -104,13 +112,20 @@
 	}
 	
 	if($userauth->checkAuthKey($authkey, $uuid) != 1){
-		redirect($basefileURI."login.php?error=invalid-key");
+		$_SESSION["error"] = "Invalid Key";
+		redirect($basefileURI."login.php");
 	}
 	if($userauth->getPermission($uuid) < 3){
-		redirect($basefileURI."login.php?error=access-denied");
+		$_SESSION["error"] = "Access Denied";
+		redirect($basefileURI."login.php");
 	}
 	
-	$credentials = "?uuid=".$uuid."&token=".$authkey."&user=".$username;
+	//$credentials = "?uuid=".$uuid."&token=".$authkey."&user=".$username;
+	$credentials = "?";
+	
+	$_SESSION["uuid"] = $uuid;
+	$_SESSION["authkey"] = $authkey;
+	$_SESSION["username"] = $username;
 	
 	//[-----------------------------]
 	//|		Plugin Engine Fireup	|
@@ -188,7 +203,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="<?php echo $basefileURI; ?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="<?php echo "logout.php"; ?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>

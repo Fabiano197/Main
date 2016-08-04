@@ -1,12 +1,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
+<meta name="description" content="content management backend">
+<meta name="author" content="socketdown">
 
 <title>Freestyle Dashboard 3</title>
 
-<?php include_once("../classfiles/favicon.php"); ?>
+<?php include_once("/../classfiles/favicon.php"); ?>
 
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
