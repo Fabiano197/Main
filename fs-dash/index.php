@@ -14,6 +14,8 @@
 	include_once("classfiles/userauth.php");
 	include_once("classfiles/analytics.php");
 	
+	session_start();
+	
 	//[-------------------------------]
 	//| 		system vars			  |
 	//[-------------------------------]
@@ -97,6 +99,12 @@
 	//|			Authentication		|
 	//[-----------------------------]
 	
+	if(!empty($_SESSION["authkey"])){
+		$authkey = $_SESSION["authkey"];
+		$uuid = $_SESSION["uuid"];
+		$username = $_SESSION["username"];
+	}
+	
 	if(isset($_POST["password"]) == true) $authkey = $userauth->genAuthKey($username, $password);
 	
 	if(strlen($uuid) < 10){
@@ -104,13 +112,20 @@
 	}
 	
 	if($userauth->checkAuthKey($authkey, $uuid) != 1){
-		redirect($basefileURI."login.php?error=invalid-key");
+		$_SESSION["error"] = "Invalid Key";
+		redirect($basefileURI."login.php");
 	}
 	if($userauth->getPermission($uuid) < 3){
-		redirect($basefileURI."login.php?error=access-denied");
+		$_SESSION["error"] = "Access Denied";
+		redirect($basefileURI."login.php");
 	}
 	
-	$credentials = "?uuid=".$uuid."&token=".$authkey."&user=".$username;
+	//$credentials = "?uuid=".$uuid."&token=".$authkey."&user=".$username;
+	$credentials = "?";
+	
+	$_SESSION["uuid"] = $uuid;
+	$_SESSION["authkey"] = $authkey;
+	$_SESSION["username"] = $username;
 	
 	//[-----------------------------]
 	//|		Plugin Engine Fireup	|
@@ -178,17 +193,17 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $username; ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="<?php echo $basefileURI.$credentials."&pageid=profile"; ?>"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="<?php echo $basefileURI."?pageid=profile"; ?>"><i class="fa fa-fw fa-user"></i> Profile</a>
                         </li>
                         <li>
                             <a href="<?php echo $standart_email_manager_URI; ?>"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
                         </li>
                         <li>
-                            <a href="<?php echo $basefileURI.$credentials."&pageid=settings"; ?>"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                            <a href="<?php echo $basefileURI."?pageid=settings"; ?>"><i class="fa fa-fw fa-gear"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="<?php echo $basefileURI; ?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="<?php echo "logout.php"; ?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -209,7 +224,7 @@
 					if($menubar_section_advanced[$menubar_forwardings[$nav_element]] == 0){
 						echo '
 							<li'.$isactive.'>
-								<a href="'.$basefileURI.$credentials."&pageid=".$page_fwd.'"><i class="fa fa-fw fa-'.$page_icon.'"></i> '.$pagename.'</a>
+								<a href="'.$basefileURI."?pageid=".$page_fwd.'"><i class="fa fa-fw fa-'.$page_icon.'"></i> '.$pagename.'</a>
 							</li>';
 					}
 				}
@@ -229,7 +244,7 @@
 					if($menubar_section_advanced[$menubar_forwardings[$nav_element]] == 1){
 						echo '
 							<li'.$isactive.'>
-								<a href="'.$basefileURI.$credentials."&pageid=".$page_fwd.'"><i class="fa fa-fw fa-'.$page_icon.'"></i> '.$pagename.'</a>
+								<a href="'.$basefileURI."?pageid=".$page_fwd.'"><i class="fa fa-fw fa-'.$page_icon.'"></i> '.$pagename.'</a>
 							</li>';
 					}
 				}
@@ -263,10 +278,10 @@
                 </div>
                 <!-- /.row -->
 
-                <div class="row">
+                <div class="row" id="newver_message_display">
                     <div class="col-lg-12">
                         <div class="alert alert-info alert-dismissable">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <button type="button" class="close" onclick="checknewver('close');" data-dismiss="alert" aria-hidden="true">&times;</button>
                             <i class="fa fa-info-circle"></i>  <?php echo "<strong>Welcome, ".$username."!</strong> You are running version ".$badge_fds_version_no." of Freestyle Dash!"; ?>
                         </div>
                     </div>
@@ -420,6 +435,20 @@
 	function delPage(page){
 		window.location.href = '<?php echo $basefileURI; ?>delp.php<?php echo $credentials?>&pageid='+page;
 	}
+	
+	function checknewver(action){
+		var current = 30100;
+		
+		if(Cookies.get("newver") != null && Cookies.get("newver") == current){
+			document.getElementById("newver_message_display").innerHTML = "";
+		}
+		
+		if(action === "close"){
+			Cookies.set("newver", current);
+		}
+	}
+	
+	checknewver(null);
 	</script>
 	
 	<style>
