@@ -13,6 +13,8 @@
 		$error["set"] = true;
 	}
 	
+	session_unset();
+	
 ?>
 
 <head>
