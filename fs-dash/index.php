@@ -371,8 +371,8 @@
 				if(strcmp($pageid, "pagedit") == 0){
 					echo '
 							<div class="col-lg-12">
-							<form id="npform" action="cnp.php'.$credentials.'" method="post">
-							<input class="btn btn-block" type="submit" value="Create Page" id="npage_submit"></input>
+							<form id="npform" action="cnp.php?pageid=pagedit" method="post">
+							<input class="btn btn-block" type="submit" value="Save" id="npage_submit"></input>
 							</form>
 							</div>';
 				}
@@ -407,6 +407,10 @@
 	
 	<script>
 	
+	$(document).ready(function() {
+		$.ajaxSetup({ cache: false });
+	});
+	
 	var edElem = document.getElementById('editor');
 	
 	CKEDITOR.editorConfig = function( config ) {
@@ -419,8 +423,12 @@
 	}
 	
 	function loadEditorialContent(index){
-		if(contentArray != null){
-			CKEDITOR.instances.editor.setData(contentArray[index]);
+		
+		if(fpidArray != null){
+			var geturi = "page_cache/"+fpidArray[index]+".html";
+			$.ajax({url: geturi, cache: false}).done(function(data){
+				CKEDITOR.instances.editor.setData(data);
+			});
 			document.getElementById("npform").innerHTML = '<input class="btn btn-block" type="submit" value="Create Page" id="npage_submit"><input style="display:none;" type="text" name="pagename" value="'+pagenameArray[index]+'"></input>'+
 			'<input type="text" id="fpid_placehold" style="display:none;" value="'+fpidArray[index]+'" form="npform" name="fpid"></input>';
 		}
