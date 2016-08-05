@@ -138,13 +138,8 @@ form textarea {
 }
 
 #titel{
-	width: 100% !important;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	margin-top: 50px;
 }
 
-#kommentar{
-	margin-left: 2.5%;
-	width: 95% !important;
-}
 
