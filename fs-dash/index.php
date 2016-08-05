@@ -441,7 +441,7 @@
 	}
 	
 	function delPage(page){
-		window.location.href = '<?php echo $basefileURI; ?>delp.php<?php echo $credentials?>&pageid='+page;
+		window.location.href = '<?php echo $basefileURI; ?>delp.php?pageid='+page;
 	}
 	
 	function checknewver(action){
@@ -477,6 +477,11 @@
 
 	.badge-inverse {
 		background-color: #333333;
+	}
+	
+	html{
+		background: url('settings/_background.jpg') no-repeat;
+		background-size;
 	}
 	</style>
 
