@@ -19,15 +19,24 @@
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kapitel<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<?php
-							$chapters = array("Drehbuch", "Auflösung", "Kamera: Einstellung", "Kamera: HD und 4K", "Kamera: Belichtung", "Kamera: Belichtung Teil 2", "Licht", "Ton", "Klappe", "Maske", "Schauspiel", "Schnitt", "Postproduktion", "Finanzierung");
-							for($i = 0; $i < count($chapters); $i++){
-								echo "<li>";
-								echo "<a";
-								if(!empty($_GET["kap"]) && $_GET["kap"] == ($i+1)){
+							// SQL Datenbank verlinken
+							define ( 'MYSQL_HOST',      'localhost' );
+							define ( 'MYSQL_BENUTZER',  'program' );
+							define ( 'MYSQL_KENNWORT',  'qwertzy13' );
+							define ( 'MYSQL_DATENBANK', 'sncmsdb' );
+							$db_link = mysqli_connect(MYSQL_HOST, MYSQL_BENUTZER, MYSQL_KENNWORT, MYSQL_DATENBANK);
+								
+							// Falls Verlinkung zur SQL-Datenbank nicht funktioniert
+							if(!$db_link){
+								exit("Verbindungsfehler: ".mysqli_connect_error());
+							} 
+							$pageinfo = mysqli_query($db_link,"SELECT `Pagename`,`PageID` FROM `pages`");
+							while ($row = mysqli_fetch_array($pageinfo)){
+								echo "<li><a";
+								if(!empty($_GET) && isset($_GET['kap']) && $_GET["kap"] == $row["PageID"]){
 									echo " class='selected'";
 								}
-								echo " href='index.php?loc=kapitel&kap=" . ($i + 1) . "'>" . ($i+1) . ". " . $chapters[$i] . " </a>";
-								echo "</li>";
+								echo " href='index.php?loc=kapitel&kap=" . $row["PageID"] . "'>" . $row["Pagename"] . " </a></li>";
 							}
 						?>	
 					</ul>
