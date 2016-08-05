@@ -20,13 +20,13 @@ http://www.jasny.net/bootstrap/javascript/#fileinput
 !IMPORTANT!
 ÄNDERUNG DER SQL STRUKTUREN VON "pages" UND "kommentare":
 
-"pages":
-removed: 	content			text
-added:		yt-link			text
-			description		text
-			pdf				text
+"pages":<br>
+removed: &emsp; content	&emsp;&emsp;&emsp; text<br>
+added:	&emsp;&emsp; yt-link	&emsp;&emsp;&emsp;&emsp; text<br>
+added:	&emsp;&emsp; description &emsp;&emsp; text<br>
+added:	&emsp;&emsp; pdf &emsp;&emsp;&emsp;&emsp;&emsp; text<br>
 
-"kommentare":
-added:	PageID		varchar(20)
+"kommentare":<br>
+added: &emsp;&emsp; PageID &emsp;&emsp;&emsp; varchar(20)
 
 
