@@ -6,30 +6,11 @@
 				<div class="container-fluid">
 					<div class="row">
 						<div class="col-lg-12">
-							<?php
-								// SQL Datenbank verlinken
-								define ( 'MYSQL_HOST',      'localhost' );
-								define ( 'MYSQL_BENUTZER',  'program' );
-								define ( 'MYSQL_KENNWORT',  'qwertzy13' );
-								define ( 'MYSQL_DATENBANK', 'sncmsdb' );
-								$db_link = mysqli_connect(MYSQL_HOST, MYSQL_BENUTZER, MYSQL_KENNWORT, MYSQL_DATENBANK);
-								
-								// Falls Verlinkung zur SQL-Datenbank nicht funktioniert
-								if(!$db_link){
-								  exit("Verbindungsfehler: ".mysqli_connect_error());
-								} 
-								
-								//Auslesen der Page über die PageID und Ausgabe des Contents
-								if (empty($_GET)){include "404.html"; exit();}
-								$auslesung = mysqli_query($db_link,"SELECT * FROM pages Where PageID =" . $_GET["kap"]);
-								$ausgabe =  mysqli_fetch_array($auslesung);
-								if($ausgabe['Content'] == ""){include "404.html"; exit();}
-								echo $ausgabe['Content'];
-							?>
+							<?php include "build/page.php"; ?>
+						
 						<div class="comments">
 							<?php
 							// SQL Datenbank verlinken
-							
 							$db_link = mysqli_connect(MYSQL_HOST, MYSQL_BENUTZER, MYSQL_KENNWORT, MYSQL_DATENBANK);
 							
 							// Falls Verlinkung zur SQL-Datenbank nicht funktioniert
