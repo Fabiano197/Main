@@ -7,18 +7,6 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<?php
-								// SQL Datenbank verlinken
-								define ( 'MYSQL_HOST',      'localhost' );
-								define ( 'MYSQL_BENUTZER',  'program' );
-								define ( 'MYSQL_KENNWORT',  'qwertzy13' );
-								define ( 'MYSQL_DATENBANK', 'sncmsdb' );
-								$db_link = mysqli_connect(MYSQL_HOST, MYSQL_BENUTZER, MYSQL_KENNWORT, MYSQL_DATENBANK);
-								
-								// Falls Verlinkung zur SQL-Datenbank nicht funktioniert
-								if(!$db_link){
-									exit("Verbindungsfehler: ".mysqli_connect_error());
-								} 
-								
 								// Überpfrüfung des GET's und entsprechende Ausgabe von 404
 								if (empty($_GET) || $_GET['kap'] == ""){include "404.html"; exit();}
 								if (mysqli_fetch_array(mysqli_query($db_link,"SELECT * FROM pages Where PageID =" . $_GET["kap"])) == ""){include "404.html"; exit();}
