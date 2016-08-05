@@ -2,7 +2,7 @@ To-do:
 - Design ausarbeiten und festlegen
 	- Hintergrund-Muster
 	- Begrüssungsbildschirm mit Einleitungstext
-	-<s>Auswahlseite</s>
+	- <s>Auswahlseite</s>
 - <s>Kapitel-Content mit php laden</s>
 - Downloads mit php laden
 - Account erstellen implementieren
