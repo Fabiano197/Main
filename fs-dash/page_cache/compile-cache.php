@@ -16,6 +16,11 @@ class CacheCompiler{
 	public function purge(){
 		array_map('unlink', glob("page_cache/*.html"));
 	}
+	
+	public function delete($file){
+		$file .= ".html";
+		unlink("page_cache/$file");
+	}
 }
 
 ?>
