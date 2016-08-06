@@ -30,6 +30,8 @@
 							if(!$db_link){
 								exit("Verbindungsfehler: ".mysqli_connect_error());
 							} 
+							
+							// Auslesen der Titel und ID'S, um die Auswahl zu erstellen
 							$pageinfo = mysqli_query($db_link,"SELECT `Pagename`,`PageID` FROM `pages`");
 							while ($row = mysqli_fetch_array($pageinfo)){
 								echo "<li><a";
