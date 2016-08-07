@@ -22,10 +22,28 @@
 				// Beschreibung auslesen
 				$auslesung = mysqli_query($db_link,"SELECT * FROM pages Where PageID =" . $_GET["kap"]);
 				$ausgabe =  mysqli_fetch_array($auslesung);
-				echo $ausgabe['description']; ?></p>
+				echo $ausgabe['description']; ?></p>				
+		</div>	
+	</div>
+	<div id="page_corr" class="row visible-xs panel panel-primary post">
+		<div class="post-description">
+		<?php
+			// PDF's auslesen
+			$auslesung = mysqli_query($db_link,"SELECT * FROM pages Where PageID =" . $_GET["kap"]);
+			$ausgabe =  mysqli_fetch_array($auslesung);
+			if($ausgabe['pdfs'] != ""){
+			$tokens = explode(",",$ausgabe['pdfs']);
+				foreach ($tokens as $val){
+					echo '<div class="col-xs-4"><a href="/content/pdf/';
+					echo $val;
+					echo '.pdf" class="thumbnail thumb" download><img class="thumb" src="content/pics/pdf.png"/></a></div>';
+				}
+			}
+		?>
 		</div>
 	</div>
 </div>
+
 <div class="row hidden-xs">
 	<?php
 		// PDF's auslesen
@@ -41,3 +59,4 @@
 		}
 	?>
 </div>	
+
