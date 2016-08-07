@@ -35,6 +35,16 @@ function createTables(){
 			)";
 			
 	echo sqlquery($query);
+	
+	$query = "CREATE TABLE kommentare
+			(
+			Benutzer text,
+			Datum text,
+			Kommentar text,
+			Titel text
+			)";
+			
+	echo sqlquery($query);
 }
 
 function createDefaultUser(){
