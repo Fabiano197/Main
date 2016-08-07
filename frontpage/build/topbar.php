@@ -1,6 +1,6 @@
 <script src="js/topbar.js"></script>
 
-<div class="menu_top">
+<div class="menu_top hidden-xs">
 	<div id="header" class="navbar navbar-default navbar-fixed-top">
 		<div class="navbar-header">
 			<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -38,7 +38,7 @@
 								if(!empty($_GET) && isset($_GET['kap']) && $_GET["kap"] == $row["PageID"]){
 									echo " class='selected'";
 								}
-								echo " href='index.php?loc=kapitel&kap=" . $row["PageID"] . "'>" . $row["Pagename"] . " </a></li>";
+								echo " href='index.php?loc=kapitel&kap=" . $row["PageID"] . "'>Kapitel ".$row["PageID"]." - ".$row["Pagename"] . " </a></li>";
 							}
 						?>	
 					</ul>
@@ -61,5 +61,16 @@
 				</li>
 			</ul>
 		</nav>
+	</div>
+</div>
+
+<div class="menu_top visible-xs">
+	<div id="header" class="navbar navbar-default navbar-static-top navbar_center">
+		<div class="navbar-header">
+			<a id="title_name" class="navbar-brand navbar-brand_top" href="#">NKSA School</a>
+			<a class="navbar-brand navbar-brand_top" href="index.php?loc=home">Home</a>
+			<a class="navbar-brand navbar-brand_top" href="index.php?loc=downloads">Downloads</a>
+			<a class="navbar-brand navbar-brand_top" href="index.php?loc=profil">Login</a>
+		</div>
 	</div>
 </div>
