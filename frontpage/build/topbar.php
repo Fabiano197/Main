@@ -1,6 +1,6 @@
 <script src="js/topbar.js"></script>
 
-<div class="menu_top">
+<div class="menu_top hidden-xs">
 	<div id="header" class="navbar navbar-default navbar-fixed-top">
 		<div class="navbar-header">
 			<button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -19,15 +19,26 @@
 				  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kapitel<b class="caret"></b></a>
 					<ul class="dropdown-menu">
 						<?php
-							$chapters = array("Drehbuch", "Auflösung", "Kamera: Einstellung", "Kamera: HD und 4K", "Kamera: Belichtung", "Kamera: Belichtung Teil 2", "Licht", "Ton", "Klappe", "Maske", "Schauspiel", "Schnitt", "Postproduktion", "Finanzierung");
-							for($i = 0; $i < count($chapters); $i++){
-								echo "<li>";
-								echo "<a";
-								if(!empty($_GET["kap"]) && $_GET["kap"] == ($i+1)){
+							// SQL Datenbank verlinken
+							define ( 'MYSQL_HOST',      'localhost' );
+							define ( 'MYSQL_BENUTZER',  'program' );
+							define ( 'MYSQL_KENNWORT',  'qwertzy13' );
+							define ( 'MYSQL_DATENBANK', 'sncmsdb' );
+							$db_link = mysqli_connect(MYSQL_HOST, MYSQL_BENUTZER, MYSQL_KENNWORT, MYSQL_DATENBANK);
+								
+							// Falls Verlinkung zur SQL-Datenbank nicht funktioniert
+							if(!$db_link){
+								exit("Verbindungsfehler: ".mysqli_connect_error());
+							} 
+							
+							// Auslesen der Titel und ID'S, um die Auswahl zu erstellen
+							$pageinfo = mysqli_query($db_link,"SELECT `Pagename`,`PageID` FROM `pages` ORDER BY PageID");
+							while ($row = mysqli_fetch_array($pageinfo)){
+								echo "<li><a";
+								if(!empty($_GET) && isset($_GET['kap']) && $_GET["kap"] == $row["PageID"]){
 									echo " class='selected'";
 								}
-								echo " href='index.php?loc=kapitel&kap=" . ($i + 1) . "'>" . ($i+1) . ". " . $chapters[$i] . " </a>";
-								echo "</li>";
+								echo " href='index.php?loc=kapitel&kap=" . $row["PageID"] . "'>Kapitel ".$row["PageID"]." - ".$row["Pagename"] . " </a></li>";
 							}
 						?>	
 					</ul>
@@ -50,5 +61,16 @@
 				</li>
 			</ul>
 		</nav>
+	</div>
+</div>
+
+<div class="menu_top visible-xs">
+	<div id="header" class="navbar navbar-default navbar-static-top navbar_center">
+		<div class="navbar-header">
+			<a id="title_name" class="navbar-brand navbar-brand_top" href="#">NKSA School</a>
+			<a class="navbar-brand navbar-brand_top" href="index.php?loc=home">Home</a>
+			<a class="navbar-brand navbar-brand_top" href="index.php?loc=downloads">Downloads</a>
+			<a class="navbar-brand navbar-brand_top" href="index.php?loc=profil">Login</a>
+		</div>
 	</div>
 </div>

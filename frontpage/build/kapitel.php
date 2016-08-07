@@ -7,29 +7,14 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<?php
-								// SQL Datenbank verlinken
-								define ( 'MYSQL_HOST',      'localhost' );
-								define ( 'MYSQL_BENUTZER',  'program' );
-								define ( 'MYSQL_KENNWORT',  'qwertzy13' );
-								define ( 'MYSQL_DATENBANK', 'sncmsdb' );
-								$db_link = mysqli_connect(MYSQL_HOST, MYSQL_BENUTZER, MYSQL_KENNWORT, MYSQL_DATENBANK);
-								
-								// Falls Verlinkung zur SQL-Datenbank nicht funktioniert
-								if(!$db_link){
-								  exit("Verbindungsfehler: ".mysqli_connect_error());
-								} 
-								
-								//Auslesen der Page über die PageID und Ausgabe des Contents
-								if (empty($_GET)){include "404.html"; exit();}
-								$auslesung = mysqli_query($db_link,"SELECT * FROM pages Where PageID =" . $_GET["kap"]);
-								$ausgabe =  mysqli_fetch_array($auslesung);
-								if($ausgabe['Content'] == ""){include "404.html"; exit();}
-								echo $ausgabe['Content'];
-							?>
+								// Überpfrüfung des GET's und entsprechende Ausgabe von 404
+								if (empty($_GET) || $_GET['kap'] == ""){include "404.html"; exit();}
+								if (mysqli_fetch_array(mysqli_query($db_link,"SELECT * FROM pages Where PageID =" . $_GET["kap"])) == ""){include "404.html"; exit();}
+								include "build/page.php"; ?>
+						
 						<div class="comments">
 							<?php
 							// SQL Datenbank verlinken
-							
 							$db_link = mysqli_connect(MYSQL_HOST, MYSQL_BENUTZER, MYSQL_KENNWORT, MYSQL_DATENBANK);
 							
 							// Falls Verlinkung zur SQL-Datenbank nicht funktioniert
@@ -110,7 +95,7 @@
 									<div class="input-group ask">
 									<input id="titel" name="titel" form="usrform" type="text" class="form-control" placeholder="Titel">
 									</div>
-									</div>';
+									';
 									
 									
 									//Falls kein Kommentar hinzugefügt wurde, wird der bereits geschriebene Titel wieder geladen
@@ -133,6 +118,7 @@
 									
 										echo '</textarea>	
 										</div>
+										</div>
 										
 										<div class="col-sm-8 ask">
 									<div class="input-group">
@@ -152,7 +138,7 @@
 				<nav>
 					<ul class="pager">
 						<li><a href="index.php?loc=kapitel&kap=<?php echo ($_GET['kap'] - 1) ?>"><button type="button" class="btn btn-primary <?php if($_GET['kap'] == 1){echo "disabled_2";}?>" <?php if($_GET['kap'] == 1){echo "onclick='return false;'";}?>>Zurück</button></a></li>
-						<li><a href="index.php?loc=kapitel&kap=<?php echo ($_GET['kap'] + 1) ?>"><button type="button" class="btn btn-primary <?php if($_GET['kap'] == 14){echo "disabled_2";}?>" <?php if($_GET['kap'] == 14){echo "onclick='return false;'";}?>>Weiter</button></a></li>
+						<li><a href="index.php?loc=kapitel&kap=<?php echo ($_GET['kap'] + 1) ?>"><button type="button" class="btn btn-primary <?php if($_GET['kap'] == mysqli_fetch_array(mysqli_query($db_link,"SELECT PageID FROM pages ORDER BY PageID desc"))['PageID']){echo "disabled_2";}?>" <?php if($_GET['kap'] == mysqli_fetch_array(mysqli_query($db_link,"SELECT PageID FROM pages ORDER BY PageID desc"))['PageID']){echo "onclick='return false;'";}?>>Weiter</button></a></li>
 					</ul>
 				</nav>
 			</div>

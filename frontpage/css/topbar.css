@@ -1,10 +1,13 @@
 .menu_top{
- height:50px;
- margin-bottom: -20px;
+	height:50px;
 }
 
 .menu_top a{
 	color: #000;
+}
+
+#title_name{
+	font-size: 18px;
 }
 
 #title_name:hover{
@@ -32,4 +35,17 @@
 
 .nohover a:hover{
 	background: rgba(0,0,0,0) !important;
+}
+
+.navbar-brand_top{
+	font-size: 13px;
+}
+.navbar_center .navbar-header{
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar_center {
+  text-align: center;
 }
