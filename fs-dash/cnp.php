@@ -26,18 +26,16 @@
 		$query = 'insert into pages (Content, Pagename, PageID) values ("'.$content.'", "'.$pagename.'", "'.$pageid.'")';
 	}
 	
+	session_start();
 	
-	
-	if($userauth->checkAuthKey($authkey, $uuid) == 1){
+	if($userauth->checkAuthKey($_SESSION['authkey'], $_SESSION['uuid']) == 1){
 		$result = sqlquery($query);
 	}
 	else{
 		redirect(getBaseAddress());
 	}
 	
-	$credentials = "?user=".$username."&token=".$authkey."&uuid=".$uuid;
-	
 	echo $fpid;
 	
-	redirect($basefileURI = getBaseAddress()."/".$credentials."&pageid=pagedit");
+	//redirect(getBaseAddress()."/".'?pageid=pagedit');
 ?>
