@@ -1,9 +1,21 @@
+<?php
+
+require "/../../fs-dash/userstats.php";
+require "/../../fs-dash/userObject.php";
+
+session_start();
+
+$user = new UserObject($_SESSION['uuid'],$_SESSION["authkey"]);
+$userstats = new Userstats();
+
+?>
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
 			<div class="panel panel-info profil_panel">
 				<div class="panel-heading">
-					<h3 class="panel-title">Sowiso XY</h3>
+					<h3 class="panel-title"><?php echo $userstats->getName($user); ?></h3>
 				</div>
 				<div class="panel-body">
 					<div class="row">
@@ -14,19 +26,23 @@
 									<td>Fortschritt:</td>
 									<td>
 										<div class="progress">
-											<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-												60%
+										
+										<?php
+										
+										?>
+											<div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $userstats->getProgress($user); ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $userstats->getProgress($user); ?>%;">
+												<?php echo $userstats->getProgress($user).'%'; ?>
 											</div>
 										</div>
 									</td>
 								</tr>
 								<tr>
 									<td>Letzte Lektion:</td>
-									<td>Kapitel 3 - Glanzlicht</td>
+									<td><?php echo $userstats->getLastLoc($user); ?></td>
 								</tr>
 								<tr>
 									<td>Registriert seit:</td>
-									<td>01/24/1988</td>
+									<td><?php echo $userstats->getRegDate($user); ?></td>
 								</tr>
 							</table>
 						</div>

@@ -24,13 +24,15 @@ private function getSecretNumber(){
 
 public function genAuthKey($user, $passwd){
 	
+	include("/../settings/config.php");
+	
 	$passwordGenerationError = false;
 	$uuid = "";
 	$passwd = md5($passwd);
 	$authkey = "invalid";
 	
 	// Create connection
-	$link = mysql_connect('localhost', 'program', 'qwertzy13');
+	$link = mysql_connect($db_host, $db_user, $db_password);
 	if (!$link) {
 		die('Not connected : ' . mysql_error());
 	}
@@ -83,14 +85,10 @@ private function genHashToken($user){
 
 public function createUser($user, $pass, $email = "anonymous@torrent.to"){
 	
-	
-	$servername = "localhost";
-	$username = "program";
-	$password = "qwertzy13";
-	$dbname = "sncmsDB";
+	include("/../settings/config.php");
 	
 	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
+	$conn = new mysqli($db_host, $db_user, $db_password, $db_db);
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	} 
@@ -123,9 +121,12 @@ private function uuid_exsists($uuid, $conn){
 }
 
 public function getPermission($uuid){
+	
+	include("/../settings/config.php");
+	
 	$permission = 0;
 	
-	$link = mysql_connect('localhost', 'program', 'qwertzy13');
+	$link = mysql_connect($db_host, $db_user, $db_password);
 		if (!$link) {
 		die('Not connected : ' . mysql_error());
 	}
@@ -146,7 +147,10 @@ public function getPermission($uuid){
 }
 
 public function setPermission($uuid, $permission){
-	$link = mysql_connect('localhost', 'program', 'qwertzy13');
+	
+	include("/../settings/config.php");
+	
+	$link = mysql_connect($db_host, $db_user, $db_password);
 		if (!$link) {
 		die('Not connected : ' . mysql_error());
 	}
@@ -165,17 +169,15 @@ public function setPermission($uuid, $permission){
 }
 
 public function getID($user, $pass){
-	$servername = "localhost";
-	$username = "program";
-	$password = "qwertzy13";
-	$dbname = "sncmsDB";
+	
+	include("/../settings/config.php");
 	
 	$uuid = "-";
 	
 	$pass = md5($pass);
 	
 	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
+	$conn = new mysqli($db_host, $db_user, $db_password, $db_db);
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	} 

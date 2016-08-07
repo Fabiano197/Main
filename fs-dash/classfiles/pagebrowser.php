@@ -50,7 +50,7 @@ function pageBrowser(){
 				include("/../page_cache/compile-cache.php");
 				$cc = new CacheCompiler();
 				
-				$cc->purge();
+				//$cc->purge();
 				$cc->cache($cachecontent);
 				
 				?>
