@@ -138,7 +138,7 @@
 				<nav>
 					<ul class="pager">
 						<li><a href="index.php?loc=kapitel&kap=<?php echo ($_GET['kap'] - 1) ?>"><button type="button" class="btn btn-primary <?php if($_GET['kap'] == 1){echo "disabled_2";}?>" <?php if($_GET['kap'] == 1){echo "onclick='return false;'";}?>>Zurück</button></a></li>
-						<li><a href="index.php?loc=kapitel&kap=<?php echo ($_GET['kap'] + 1) ?>"><button type="button" class="btn btn-primary <?php if($_GET['kap'] == 14){echo "disabled_2";}?>" <?php if($_GET['kap'] == 14){echo "onclick='return false;'";}?>>Weiter</button></a></li>
+						<li><a href="index.php?loc=kapitel&kap=<?php echo ($_GET['kap'] + 1) ?>"><button type="button" class="btn btn-primary <?php if($_GET['kap'] == mysqli_fetch_array(mysqli_query($db_link,"SELECT PageID FROM pages ORDER BY PageID desc"))['PageID']){echo "disabled_2";}?>" <?php if($_GET['kap'] == mysqli_fetch_array(mysqli_query($db_link,"SELECT PageID FROM pages ORDER BY PageID desc"))['PageID']){echo "onclick='return false;'";}?>>Weiter</button></a></li>
 					</ul>
 				</nav>
 			</div>

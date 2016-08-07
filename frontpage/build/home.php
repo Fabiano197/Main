@@ -9,7 +9,7 @@
 				</div>
 			</div>
 			<?php
-				$pageinfo = mysqli_query($db_link,"SELECT `Pagename`,`PageID` FROM `pages`");
+				$pageinfo = mysqli_query($db_link,"SELECT `Pagename`,`PageID` FROM `pages` ORDER BY PageID");
 				while ($row = mysqli_fetch_array($pageinfo)){
 					$path = "content/pics/home_" . $row["PageID"] . ".png";
 					echo '<div class="col-xs-6 col-md-4 col-lg-3 home_select"><a href="index.php?loc=kapitel&kap='. $row["PageID"] .'"><div class="panel panel-default shadow_select"><div class="panel-heading"><h3 class="panel-title">';
