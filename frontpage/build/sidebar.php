@@ -8,7 +8,7 @@
 				if(!empty($_GET) && $_GET["kap"] == $row["PageID"]){
 					echo " class='selected'";
 				}
-				echo " href='index.php?loc=kapitel&kap=" . $row["PageID"] . "'>" . $row["Pagename"] . " </a></li>";
+				echo " href='index.php?loc=kapitel&kap=" . $row["PageID"] . "'>Kapitel ".$row["PageID"]." - ".$row["Pagename"] . " </a></li>";
 			}
 		?>
 	</ul>
