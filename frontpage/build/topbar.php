@@ -32,7 +32,7 @@
 							} 
 							
 							// Auslesen der Titel und ID'S, um die Auswahl zu erstellen
-							$pageinfo = mysqli_query($db_link,"SELECT `Pagename`,`PageID` FROM `pages`");
+							$pageinfo = mysqli_query($db_link,"SELECT `Pagename`,`PageID` FROM `pages` ORDER BY PageID");
 							while ($row = mysqli_fetch_array($pageinfo)){
 								echo "<li><a";
 								if(!empty($_GET) && isset($_GET['kap']) && $_GET["kap"] == $row["PageID"]){
