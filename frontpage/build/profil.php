@@ -1,13 +1,9 @@
 <?php
-
-require "/../../fs-dash/userstats.php";
-require "/../../fs-dash/userObject.php";
-
-session_start();
-
-$user = new UserObject($_SESSION['uuid'],$_SESSION["authkey"]);
-$userstats = new Userstats();
-
+	require "/../../fs-dash/userstats.php";
+	require "/../../fs-dash/userObject.php";
+	session_start();
+	$user = new UserObject($_SESSION['uuid'],$_SESSION["authkey"]);
+	$userstats = new Userstats();
 ?>
 
 <div class="container-fluid">
@@ -26,10 +22,6 @@ $userstats = new Userstats();
 									<td>Fortschritt:</td>
 									<td>
 										<div class="progress">
-										
-										<?php
-										
-										?>
 											<div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $userstats->getProgress($user); ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $userstats->getProgress($user); ?>%;">
 												<?php echo $userstats->getProgress($user).'%'; ?>
 											</div>
