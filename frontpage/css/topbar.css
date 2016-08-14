@@ -1,45 +1,71 @@
 .menu_top{
-	height:50px;
+	width: 100%;
 	margin-bottom: -20px;
 }
 
 .menu_top a{
-	color: #000;
+	color: #fff;
 }
 
 #title_name{
-	font-size: 18px;
+	font-size: 24px;
+	background: #fff;
+	margin-top:-20px;
+	margin-left:-20px;
+	margin-right: 20px;
+	padding: 35px 20px 35px 35px;
 }
 
 #title_name:hover{
 	cursor: default !important;
-	background: none !important;
+	background: #fff !important;
+}
+
+
+.top_black{
+	color: #000 !important;
+}
+
+#header{
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
 #header a{
-	color: #000;
+	color: #fff;
 }
 
 #header a:hover{
 	cursor: pointer;
-	background: rgba(105,174,194,0.25);
+	background: rgba(71,182,224,0.25);
 }
 
 #nbAcctDD{
-	background: #69AEC2;
+	background: #47b4e0;
 	color: #fff !important;
+	border: 3px solid #fff;
+	border-radius: 6px;
 }
 
-#nbAcctDD:hover{
-    background-color: #3F8DA3 !important;
+#nbAcctDD:hover,#nbAcctDD:focus{
+    background-color: #fff !important;
+	color: #47b4e0 !important;
 }
 
 .nohover a:hover{
 	background: rgba(0,0,0,0) !important;
 }
 
+.navbar-brand{
+	height: 58px;
+	color: #47b4e0 !important;
+	border-bottom-right-radius: 6px;
+}
+
 .navbar-brand_top{
-	font-size: 13px;
+	font-size: 13px !important;
+	color: #fff !important;
 }
 .navbar_center .navbar-header{
   display: inline-block;
@@ -47,6 +73,46 @@
   vertical-align: top;
 }
 
-.navbar_center {
-  text-align: center;
+.navbar_center{
+	
+}
+
+.navbar_mobile{
+	margin-bottom: -20px;
+}
+
+/* navbar */
+.navbar-default {
+    background-color: #47b4e0;
+    border-color: #47b4e0;
+}
+
+/* link */
+.navbar-default .navbar-nav > li > a {
+    color: #777;
+	font-size: 18px;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    background-color: #fff !important;
+	color: #47b4e0 !important;
+	border-radius: 6px;
+}
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus {
+    background-color: #fff !important;
+	color: #47b4e0 !important;
+	border-radius: 6px;
+}
+.navbar-default .navbar-nav > .open > a, 
+.navbar-default .navbar-nav > .open > a:hover, 
+.navbar-default .navbar-nav > .open > a:focus {
+    background-color: #fff !important;
+	color: #47b4e0 !important;
+	border-radius: 6px;
+}
+
+.navbar-nav>li>.dropdown-menu {
+	border-radius: 6px;
 }

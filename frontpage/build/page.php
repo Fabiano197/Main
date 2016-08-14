@@ -1,16 +1,16 @@
 <div id="description" class="col-sm-8 post comments">
 	<div class="responsive-video">
-		<iframe src="<?php
+		<iframe class="yt-vid" src="<?php
 						// Auslesen des YT-Links
 						$auslesung = mysqli_query($db_link,"SELECT * FROM pages Where PageID =" . $_GET["kap"]);
 						$ausgabe =  mysqli_fetch_array($auslesung);
 						echo $ausgabe['yt-link'];
 						?>" frameborder="0" allowfullscreen></iframe>
 	</div>
-	<div id="ab" class="panel panel-primary post">
+	<div id="ab" class="panel panel-primary post page_panel panel-shadow">
 		<div class="post-heading">
 			<div class="pull-left meta">
-				<h3 class="panel-title"><a><b><?php 
+				<h3 class="panel-title page_panel_title"><a><b><?php 
 						// Titel auslesen
 						$auslesung = mysqli_query($db_link,"SELECT * FROM pages Where PageID =" . $_GET["kap"]);
 						$ausgabe =  mysqli_fetch_array($auslesung);

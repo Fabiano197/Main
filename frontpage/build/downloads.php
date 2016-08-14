@@ -1,4 +1,4 @@
-<div class="container hidden-xs hidden-lg">
+<div class="container hidden-xs hidden-lg down_con">
 	<div class="jumbotron">
 		<?php 
 			// Auslesen der Titel und PDF's
@@ -20,7 +20,7 @@
 					if($indti == count($titel)-1){$end = true;}
 				}
 				if($end){
-					for($encou = 0; $encou < $rowsize-(count($titel)%$rowsize); $encou++){echo'<th class="down_invisible">Kapitel 0</th>';}
+					for($encou = 0; $encou < $rowsize-(count($titel)%$rowsize)&& 0 <> count($titel)%$rowsize; $encou++){echo'<th class="down_invisible">Kapitel 0</th>';}
 				}
 				echo '</tr></thead><tbody>';
 				
@@ -38,12 +38,12 @@
 							echo'<td>';
 							$names = explode(",",$pdf[$indti]);
 							if(count($names)> $ind && $names[0] != ""){
-								echo'<a href="/content/pdf/'. $names[$ind] .'.pdf" download>'. $names[$ind] . '.pdf</a>';
+								echo'<a class="downloads_dws" href="/content/pdf/'. $names[$ind] .'.pdf" download>'. $names[$ind] . '.pdf</a>';
 							}
 							echo'</td>';
 							if($indti == count($titel)-1){$end = true;}
 							if($end){
-								for($encou = 0; $encou < $rowsize-(count($titel)%$rowsize); $encou++){echo'<td></td>';}
+								for($encou = 0; $encou < $rowsize-(count($titel)%$rowsize)&& 0 <> count($titel)%$rowsize; $encou++){echo'<td></td>';}
 							}
 						}
 					echo'</tr>';
@@ -55,7 +55,7 @@
 	</div>
 </div>
 
-<div class="container visible-xs">
+<div class="container visible-xs down_con">
 	<div class="jumbotron">
 		<?php 
 			// Auslesen der Titel und PDF's
@@ -77,7 +77,7 @@
 					if($indti == count($titel)-1){$end = true;}
 				}
 				if($end){
-					for($encou = 0; $encou < $rowsize-(count($titel)%$rowsize); $encou++){echo'<th class="down_invisible">Kapitel 0</th>';}
+					for($encou = 0; $encou < $rowsize-(count($titel)%$rowsize) && 0 <> count($titel)%$rowsize; $encou++){echo'<th class="down_invisible">Kapitel 0</th>';}
 				}
 				echo '</tr></thead><tbody>';
 				
@@ -95,12 +95,12 @@
 							echo'<td>';
 							$names = explode(",",$pdf[$indti]);
 							if(count($names)> $ind && $names[0] != ""){
-								echo'<a href="/content/pdf/'. $names[$ind] .'.pdf" download>'. $names[$ind] . '.pdf</a>';
+								echo'<a class="downloads_dws" href="/content/pdf/'. $names[$ind] .'.pdf" download>'. $names[$ind] . '.pdf</a>';
 							}
 							echo'</td>';
 							if($indti == count($titel)-1){$end = true;}
 							if($end){
-								for($encou = 0; $encou < $rowsize-(count($titel)%$rowsize); $encou++){echo'<td></td>';}
+								for($encou = 0; $encou < $rowsize-(count($titel)%$rowsize) && 0 <> count($titel)%$rowsize; $encou++){echo'<td></td>';}
 							}
 						}
 					echo'</tr>';
@@ -113,7 +113,7 @@
 </div>
 
 
-<div class="container visible-lg">
+<div class="container visible-lg down_con">
 	<div class="jumbotron">
 		<?php 
 			// Auslesen der Titel und PDF's
@@ -135,7 +135,7 @@
 					if($indti == count($titel)-1){$end = true;}
 				}
 				if($end){
-					for($encou = 0; $encou < $rowsize-(count($titel)%$rowsize); $encou++){echo'<th class="down_invisible">Kapitel 0</th>';}
+					for($encou = 0; $encou < $rowsize-(count($titel)%$rowsize)&& 0 <> count($titel)%$rowsize; $encou++){echo'<th class="down_invisible">Kapitel 0</th>';}
 				}
 				echo '</tr></thead><tbody>';
 				
@@ -153,12 +153,12 @@
 							echo'<td>';
 							$names = explode(",",$pdf[$indti]);
 							if(count($names)> $ind && $names[0] != ""){
-								echo'<a href="/content/pdf/'. $names[$ind] .'.pdf" download>'. $names[$ind] . '.pdf</a>';
+								echo'<a class="downloads_dws" href="/content/pdf/'. $names[$ind] .'.pdf" download>'. $names[$ind] . '.pdf</a>';
 							}
 							echo'</td>';
 							if($indti == count($titel)-1){$end = true;}
 							if($end){
-								for($encou = 0; $encou < $rowsize-(count($titel)%$rowsize); $encou++){echo'<td></td>';}
+								for($encou = 0; $encou < $rowsize-(count($titel)%$rowsize)&& 0 <> count($titel)%$rowsize; $encou++){echo'<td></td>';}
 							}
 						}
 					echo'</tr>';

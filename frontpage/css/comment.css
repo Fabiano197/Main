@@ -102,3 +102,44 @@
 .post .post-footer .comments-list .comment > .comments-list {
   margin-left: 50px;
 }
+
+.page_panel_title, .page_panel .post-description{
+	 color: #fff !important;
+}
+
+.page_panel_title a:hover{
+	text-decoration: none !important;
+	cursor: default;
+}
+
+.page_panel{
+	margin-top: 10px;
+	background: #47b4e0;
+	border: 3px solid #fff;
+	border-radius: 6px:
+}
+
+.thumbnail{
+	background: #47b4e0;
+	border: 3px solid #fff;
+	border-radius: 6px;
+}
+
+.thumbnail:hover{
+	background: #fff;
+	border:none;
+}
+
+#ab{
+	margin-bottom: 75px !important;
+	margin-top: 10px;
+	background: #fff;
+	border: 3px solid #fff;
+	border-radius: 6px:
+}
+
+#ab .page_panel_title, #ab .post-description{
+	color: #47b4e0 !important;
+}
+
+

@@ -53,11 +53,11 @@
 							//Darstellen von Kommentaren
 							while ($zeile = mysqli_fetch_array($auslesen)){
 							echo '<div class="col-sm-8 post com">
-								<div class="panel panel-white post panel-shadow">
+								<div class="panel panel-white post panel-shadow page_panel">
 									<div class="post-heading">
 										<div class="pull-left meta">
-											<div class="panel-title">
-												<a href="#"><b>';
+											<div class="panel-title page_panel_title">
+												<a><b>';
 												
 												echo  $zeile['Titel'];
 												
@@ -93,7 +93,7 @@
 									
 									<div class="col-sm-8 ask">
 									<div class="input-group ask">
-									<input id="titel" name="titel" form="usrform" type="text" class="form-control" placeholder="Titel">
+									<input id="titel" name="titel" form="usrform" type="text" class="form-control kap_in" placeholder="Titel">
 									</div>
 									';
 									
@@ -107,7 +107,7 @@
 										echo '</textarea>
 									<div class="form-group">
 								
-									<textarea class="form-control" rows="15" name="kommentar" form="usrform" id="kommentar">';
+									<textarea class="form-control kap_in" rows="15" name="kommentar" form="usrform" id="kommentar">';
 									
 									
 									//Falls kein Titel hinzugefügt wurde, wird der bereits geschriebene Kommentar wieder geladen
@@ -123,7 +123,7 @@
 										<div class="col-sm-8 ask">
 									<div class="input-group">
 									<span class="input-group-btn">
-									<a><button type="submit" value="senden" name="submitbutton" class="btn btn-primary">Senden</button></a>
+									<a><button type="submit" value="senden" name="submitbutton" class="btn btn-primary btn_invert">Senden</button></a>
 									</span>
 									</div>
 									</div>
@@ -137,8 +137,8 @@
             </div>
 				<nav>
 					<ul class="pager">
-						<li><a href="index.php?loc=kapitel&kap=<?php echo ($_GET['kap'] - 1) ?>"><button type="button" class="btn btn-primary <?php if($_GET['kap'] == 1){echo "disabled_2";}?>" <?php if($_GET['kap'] == 1){echo "onclick='return false;'";}?>>Zurück</button></a></li>
-						<li><a href="index.php?loc=kapitel&kap=<?php echo ($_GET['kap'] + 1) ?>"><button type="button" class="btn btn-primary <?php if($_GET['kap'] == mysqli_fetch_array(mysqli_query($db_link,"SELECT PageID FROM pages ORDER BY PageID desc"))['PageID']){echo "disabled_2";}?>" <?php if($_GET['kap'] == mysqli_fetch_array(mysqli_query($db_link,"SELECT PageID FROM pages ORDER BY PageID desc"))['PageID']){echo "onclick='return false;'";}?>>Weiter</button></a></li>
+						<li><a href="index.php?loc=kapitel&kap=<?php echo ($_GET['kap'] - 1) ?>"><button type="button" class="btn btn-primary btn_invert <?php if($_GET['kap'] == 1){echo "disabled_2";}?>" <?php if($_GET['kap'] == 1){echo "onclick='return false;'";}?>>Zurück</button></a></li>
+						<li><a href="index.php?loc=kapitel&kap=<?php echo ($_GET['kap'] + 1) ?>"><button type="button" class="btn btn-primary btn_invert <?php if($_GET['kap'] == mysqli_fetch_array(mysqli_query($db_link,"SELECT PageID FROM pages ORDER BY PageID desc"))['PageID']){echo "disabled_2";}?>" <?php if($_GET['kap'] == mysqli_fetch_array(mysqli_query($db_link,"SELECT PageID FROM pages ORDER BY PageID desc"))['PageID']){echo "onclick='return false;'";}?>>Weiter</button></a></li>
 					</ul>
 				</nav>
 			</div>

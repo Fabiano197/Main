@@ -3,6 +3,7 @@
 		<?php	
 			// Auslesen der Titel und ID'S, um die Auswahl zu erstellen
 			$pageinfo = mysqli_query($db_link,"SELECT `Pagename`,`PageID` FROM `pages` ORDER BY PageID");
+			echo '<li><a id="side_hidden">d</a></li>';
 			while ($row = mysqli_fetch_array($pageinfo)){
 				echo "<li><a";
 				if(!empty($_GET) && $_GET["kap"] == $row["PageID"]){
