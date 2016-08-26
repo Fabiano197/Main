@@ -42,7 +42,7 @@
 							}
 							
 							// bestehende Kommentare auslesen
-							$auslesung = ("SELECT * FROM Kommentare ORDER BY Datum");
+							$auslesung = ("SELECT * FROM kommentare ORDER BY Datum");
 							$auslesen = mysqli_query($db_link, $auslesung);
 							
 							// Falls Auslesung nicht funktioniert
@@ -89,7 +89,7 @@
 							}
 							
 								if($berechtigung > 0){
-									echo '<form action="kapitel.php?kap=' . $_GET['kap'] . '" method="POST" id="usrform">
+									echo '<form action="index.php?loc=kapitel&kap=' . $_GET['kap'] . '" method="POST" id="usrform">
 									
 									<div class="col-sm-8 ask">
 									<div class="input-group ask">

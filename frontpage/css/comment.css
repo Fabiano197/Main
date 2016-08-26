@@ -5,7 +5,6 @@
   border: 1px solid #dddddd;
 }
 .panel-white  .panel-heading {
-  color: #333;
   background-color: #fff;
   border-color: #ddd;
 }
@@ -104,7 +103,7 @@
 }
 
 .page_panel_title, .page_panel .post-description{
-	 color: #fff !important;
+	 color: #47b4e0 !important;
 }
 
 .page_panel_title a:hover{
@@ -114,8 +113,8 @@
 
 .page_panel{
 	margin-top: 10px;
-	background: #47b4e0;
-	border: 3px solid #fff;
+	background: #fff;
+	border: 3px solid #eee;
 	border-radius: 6px:
 }
 

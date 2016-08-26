@@ -32,6 +32,29 @@
 .table-user-information > tbody > tr > td {
     border-top: 0;
 }
-.toppad
-{margin-top:20px;
+.toppad{
+	margin-top:20px;
+}
+
+#pro-mail{
+	
+}
+
+#pro-name{
+	color: #47b4e0;
+	border-bottom: 3px solid #47b4e0;
+}
+
+#pro_pan_inf{
+	border: 3px solid #fff;
+	border-radius: 6px;
+}
+
+#profil_pan{
+	border: none;
+}
+
+#pro_head, #pro_foot{
+	background: #fff!important;
+	border: none;
 }

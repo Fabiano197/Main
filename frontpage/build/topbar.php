@@ -21,8 +21,8 @@
 						<?php
 							// SQL Datenbank verlinken
 							define ( 'MYSQL_HOST',      'localhost' );
-							define ( 'MYSQL_BENUTZER',  'program' );
-							define ( 'MYSQL_KENNWORT',  'qwertzy13' );
+							define ( 'MYSQL_BENUTZER',  'wpp' );
+							define ( 'MYSQL_KENNWORT',  'Wppgamer1998,' );
 							define ( 'MYSQL_DATENBANK', 'sncmsdb' );
 							$db_link = mysqli_connect(MYSQL_HOST, MYSQL_BENUTZER, MYSQL_KENNWORT, MYSQL_DATENBANK);
 								

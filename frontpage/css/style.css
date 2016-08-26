@@ -78,17 +78,19 @@ body{
 
 .btn-danger{
     background-color: #EF4836;
-    border-color: #fff;
+	border: 2px solid #fff;
 }
 
 .btn-danger:hover {
-    background-color: #D02311;
-    border-color: #fff;
+    background-color: #fff;
+    border-color: #fff !important;
+	color: #EF4836;
 }
 
 .btn-danger:active {
-    background-color: #A41203 !important;
+    background-color: #fff !important;
     border-color: #fff !important;
+	color: #EF4836;
 }
 
 .disabled_2{
